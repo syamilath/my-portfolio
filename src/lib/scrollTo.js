@@ -21,32 +21,11 @@ export default function scrollToSection(sectionId, opts = {}) {
     // ignore and fall back
   }
 
-  // Fallback to native smooth scroll - works on all devices
-  const startPosition = window.scrollY;
-  const targetPosition = element.getBoundingClientRect().top + window.scrollY;
-  const distance = targetPosition - startPosition;
-  const duration = opts.duration || 1000;
-  let start = null;
-
-  // Use requestAnimationFrame for smooth animation
-  const animation = (currentTime) => {
-    if (start === null) start = currentTime;
-    const elapsed = currentTime - start;
-    const progress = Math.min(elapsed / duration, 1);
-    
-    // Easing function for smooth scroll
-    const easeInOutQuad = progress < 0.5 ? 
-      2 * progress * progress : 
-      -1 + (4 - 2 * progress) * progress;
-    
-    window.scrollTo(0, startPosition + distance * easeInOutQuad);
-    
-    if (progress < 1) {
-      requestAnimationFrame(animation);
-    } else {
-      if (opts.onComplete) opts.onComplete();
-    }
-  };
-
-  requestAnimationFrame(animation);
+  // Fallback to native smooth scroll
+  element.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (opts.onComplete) {
+    // Estimate duration and call onComplete after delay
+    const estimatedDuration = opts.duration || 700;
+    setTimeout(opts.onComplete, estimatedDuration);
+  }
 }

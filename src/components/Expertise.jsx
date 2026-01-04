@@ -154,8 +154,8 @@ export default function ExpertiseSection() {
 
     const container = containerRef.current;
     if (container) {
-      container.addEventListener("touchstart", handleTouchStart, { passive: true });
-      container.addEventListener("touchend", handleTouchEnd, { passive: true });
+      container.addEventListener("touchstart", handleTouchStart);
+      container.addEventListener("touchend", handleTouchEnd);
     }
 
     return () => {
