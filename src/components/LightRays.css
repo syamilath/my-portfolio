@@ -1,0 +1,46 @@
+.light-rays {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.light-ray {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(circle at center, #C3874C 0%, transparent 70%);
+  opacity: 0.2;
+  filter: blur(80px);
+  animation: float 20s infinite;
+}
+
+.light-ray:nth-child(1) {
+  top: -20%;
+  left: -10%;
+  animation-delay: -5s;
+}
+
+.light-ray:nth-child(2) {
+  bottom: -30%;
+  right: -20%;
+  animation-delay: -10s;
+  width: 600px;
+  height: 800px;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10%, 10%);
+  }
+  50% {
+    transform: translate(-5%, 5%);
+  }
+  75% {
+    transform: translate(-10%, -10%);
+  }
+}
