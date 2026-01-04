@@ -66,6 +66,7 @@ function ProjectCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
+      className="project-card"
       style={{
         perspective: "1000px",
         position: "relative",
@@ -363,13 +364,12 @@ features: [
               exit={{ scale: 0.8, y: 50 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-2xl w-full max-h-[70vh] overflow-y-auto rounded-3xl overflow-hidden"
+              className="relative w-full max-w-2xl max-h-[85vh] md:max-h-[70vh] overflow-y-auto rounded-3xl"
               style={{
                 border: "1px solid rgba(255,255,255,0.15)",
-                msOverflowStyle: "none" /* Untuk Internet Explorer dan Edge */,
-                scrollbarWidth: "none" /* Untuk Firefox */,
-                WebkitOverflowScrolling:
-                  "touch" /* Supaya scroll di HP tetap mulus */,
+                msOverflowStyle: "none",
+                scrollbarWidth: "none",
+                WebkitOverflowScrolling: "touch",
               }}
             >
               {/* Modal Card Background (match ProjectCard) */}
@@ -389,7 +389,7 @@ features: [
               </button>
 
               {/* Hero Image */}
-              <div className="relative h-64 md:h-80 overflow-hidden rounded-t-3xl">
+              <div className="relative h-48 md:h-64 lg:h-80 overflow-hidden rounded-t-3xl bg-black">
                 <motion.div
                   key={currentImageIndex}
                   initial={{ opacity: 0 }}
@@ -488,16 +488,16 @@ features: [
               </div>
 
               {/* Content */}
-              <div className="p-8 md:p-12">
+              <div className="p-6 md:p-8 lg:p-12 bg-black">
                 {/* Description */}
                 <div className="mb-8">
                   <h3
-                    className="text-xl font-bold text-white mb-4"
+                    className="text-lg md:text-xl font-bold text-white mb-4"
                     style={{ color: "#C3874C" }}
                   >
                     About the Project
                   </h3>
-                  <p className="text-white/80 leading-relaxed">
+                  <p className="text-white/80 leading-relaxed text-sm md:text-base">
                     {selectedProject.description}
                   </p>
                 </div>
@@ -505,16 +505,16 @@ features: [
                 {/* Technologies */}
                 <div className="mb-8">
                   <h3
-                    className="text-xl font-bold text-white mb-4"
+                    className="text-lg md:text-xl font-bold text-white mb-4"
                     style={{ color: "#C3874C" }}
                   >
                     Technologies Used
                   </h3>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {selectedProject.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 rounded-full text-sm font-semibold text-white"
+                        className="px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-semibold text-white"
                         style={{
                           background: "rgba(195, 135, 76, 0.2)",
                           border: "1px solid rgba(195, 135, 76, 0.3)",
@@ -529,19 +529,19 @@ features: [
                 {/* Features */}
                 <div>
                   <h3
-                    className="text-xl font-bold text-white mb-4"
+                    className="text-lg md:text-xl font-bold text-white mb-4"
                     style={{ color: "#C3874C" }}
                   >
                    Key Features
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-2 md:space-y-3">
                     {selectedProject.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
+                      <div key={idx} className="flex items-start gap-2 md:gap-3">
                         <div
-                          className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                          className="w-2 h-2 rounded-full mt-1.5 md:mt-2 flex-shrink-0"
                           style={{ background: "#C3874C" }}
                         />
-                        <p className="text-white/80">{feature}</p>
+                        <p className="text-white/80 text-sm md:text-base">{feature}</p>
                       </div>
                     ))}
                   </div>

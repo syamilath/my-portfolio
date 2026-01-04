@@ -7,6 +7,8 @@ export default function ExpertiseSection() {
   const [isHovering, setIsHovering] = useState(false);
   const containerRef = useRef(null);
   const scrollThreshold = 50; // Threshold untuk mengurangi sensitivitas
+  const touchStartY = useRef(0);
+  const touchEndY = useRef(0);
 
   const expertiseData = [
     {
@@ -122,6 +124,46 @@ export default function ExpertiseSection() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentIndex, isScrolling]);
+
+  // Handle touch swipe untuk mobile
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      touchStartY.current = e.changedTouches[0].screenY;
+    };
+
+    const handleTouchEnd = (e) => {
+      touchEndY.current = e.changedTouches[0].screenY;
+      handleSwipe();
+    };
+
+    const handleSwipe = () => {
+      const diff = touchStartY.current - touchEndY.current;
+      const threshold = 50;
+
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          // Swipe up - next
+          scrollToNext();
+        } else {
+          // Swipe down - prev
+          scrollToPrev();
+        }
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("touchstart", handleTouchStart);
+      container.addEventListener("touchend", handleTouchEnd);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("touchstart", handleTouchStart);
+        container.removeEventListener("touchend", handleTouchEnd);
+      }
+    };
   }, [currentIndex, isScrolling]);
 
   return (

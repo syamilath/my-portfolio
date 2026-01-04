@@ -10,7 +10,12 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   const handleNavClick = (item) => {
     const sectionId = item.toLowerCase().replace(" ", "-");
     setActiveSection(sectionId);
-    scrollToSection(sectionId, { onComplete: () => setActiveSection(sectionId) });
+    scrollToSection(sectionId, { 
+      duration: 1000,
+      onComplete: () => setActiveSection(sectionId) 
+    });
+    // Close mobile menu jika terbuka
+    setIsOpen(false);
   };
 
   return (
