@@ -207,12 +207,12 @@ const Contact = ({ setActiveSection }) => {
             <h3 className="text-2xl font-bold text-[#C3874C] tracking-wider">SATHALLA.</h3>
 
             {/* Navigation Links */}
-            <nav className="flex flex-wrap justify-center gap-8 text-white ">
-              <button onClick={() => handleNavClick("Home")} className="hover:text-[#C3874C] transition-colors cursor-pointer">Home</button>
-              <button onClick={() => handleNavClick("About")} className="hover:text-[#C3874C] transition-colors cursor-pointer">About</button>
-              <button onClick={() => handleNavClick("Achievement")} className="hover:text-[#C3874C] transition-colors cursor-pointer">Achievement</button>
-              <button onClick={() => handleNavClick("Projects")} className="hover:text-[#C3874C] transition-colors cursor-pointer">Projects</button>
-              <button onClick={() => handleNavClick("Contact")} className="hover:text-[#C3874C] transition-colors cursor-pointer">Contact</button>
+            <nav className="flex flex-wrap justify-center gap-8 text-white relative z-20">
+              <button onClick={() => handleNavClick("Home")} className="hover:text-[#C3874C] transition-colors cursor-pointer relative z-20 pointer-events-auto">Home</button>
+              <button onClick={() => handleNavClick("About")} className="hover:text-[#C3874C] transition-colors cursor-pointer relative z-20 pointer-events-auto">About</button>
+              <button onClick={() => handleNavClick("Achievement")} className="hover:text-[#C3874C] transition-colors cursor-pointer relative z-20 pointer-events-auto">Achievement</button>
+              <button onClick={() => handleNavClick("Projects")} className="hover:text-[#C3874C] transition-colors cursor-pointer relative z-20 pointer-events-auto">Projects</button>
+              <button onClick={() => handleNavClick("Contact")} className="hover:text-[#C3874C] transition-colors cursor-pointer relative z-20 pointer-events-auto">Contact</button>
             </nav>
 
             {/* Social Media Icons */}
