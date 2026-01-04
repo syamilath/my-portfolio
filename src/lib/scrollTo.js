@@ -60,5 +60,3 @@ export default function scrollToSection(sectionId, opts = {}) {
     setTimeout(opts.onComplete, estimatedDuration);
   }
 }
-  }
-}
