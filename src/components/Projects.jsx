@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -24,7 +24,6 @@ function ProjectCard({
   onClick,
 }) {
   const ref = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useSpring(useMotionValue(0), springValues);
@@ -32,17 +31,8 @@ function ProjectCard({
   const scale = useSpring(1, springValues);
   const glowOpacity = useSpring(0);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
   function handleMouse(e) {
-    if (!ref.current || isMobile) return;
+    if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const offsetX = e.clientX - rect.left - rect.width / 2;
     const offsetY = e.clientY - rect.top - rect.height / 2;
@@ -57,7 +47,6 @@ function ProjectCard({
   }
 
   function handleMouseEnter() {
-    if (isMobile) return;
     scale.set(1.03);
     glowOpacity.set(0.8);
   }
@@ -73,7 +62,7 @@ function ProjectCard({
     <div
       className="project-card"
       style={{
-        perspective: isMobile ? "none" : "1000px",
+        perspective: "1000px",
         position: "relative",
         cursor: "pointer",
       }}
@@ -91,10 +80,10 @@ function ProjectCard({
           }
         }}
         style={{
-          rotateX: isMobile ? 0 : rotateX,
-          rotateY: isMobile ? 0 : rotateY,
-          scale: isMobile ? 1 : scale,
-          transformStyle: isMobile ? "initial" : "preserve-3d",
+          rotateX,
+          rotateY,
+          scale,
+          transformStyle: "preserve-3d",
           position: "relative",
           pointerEvents: "auto",
         }}

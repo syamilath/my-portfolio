@@ -139,10 +139,3 @@ h1, h2, h3, h4, h5, h6 {
     @apply bg-background text-foreground;
   }
 }
-
-/* Disable 3D effects on mobile devices */
-@media (max-width: 767px) {
-  .project-card {
-    perspective: none !important;
-  }
-}
