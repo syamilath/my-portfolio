@@ -42,7 +42,7 @@ function ProjectCard({
   }, []);
 
   function handleMouse(e) {
-    if (!ref.current || isMobile) return;
+    if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const offsetX = e.clientX - rect.left - rect.width / 2;
     const offsetY = e.clientY - rect.top - rect.height / 2;
@@ -57,7 +57,6 @@ function ProjectCard({
   }
 
   function handleMouseEnter() {
-    if (isMobile) return;
     scale.set(1.03);
     glowOpacity.set(0.8);
   }
@@ -73,7 +72,7 @@ function ProjectCard({
     <div
       className="project-card"
       style={{
-        perspective: isMobile ? "none" : "1000px",
+        perspective: "1000px",
         position: "relative",
         cursor: "pointer",
       }}
@@ -85,10 +84,10 @@ function ProjectCard({
         onMouseLeave={handleMouseLeave}
         onClick={onClick}
         style={{
-          rotateX: isMobile ? 0 : rotateX,
-          rotateY: isMobile ? 0 : rotateY,
-          scale: isMobile ? 1 : scale,
-          transformStyle: isMobile ? "initial" : "preserve-3d",
+          rotateX: rotateX,
+          rotateY: rotateY,
+          scale: scale,
+          transformStyle: "preserve-3d",
           position: "relative",
           pointerEvents: "auto",
         }}
