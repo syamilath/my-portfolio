@@ -24,6 +24,7 @@ function ProjectCard({
   onClick,
 }) {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useSpring(useMotionValue(0), springValues);
@@ -31,8 +32,17 @@ function ProjectCard({
   const scale = useSpring(1, springValues);
   const glowOpacity = useSpring(0);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   function handleMouse(e) {
-    if (!ref.current) return;
+    if (!ref.current || isMobile) return;
     const rect = ref.current.getBoundingClientRect();
     const offsetX = e.clientX - rect.left - rect.width / 2;
     const offsetY = e.clientY - rect.top - rect.height / 2;
@@ -47,6 +57,7 @@ function ProjectCard({
   }
 
   function handleMouseEnter() {
+    if (isMobile) return;
     scale.set(1.03);
     glowOpacity.set(0.8);
   }
@@ -62,7 +73,7 @@ function ProjectCard({
     <div
       className="project-card"
       style={{
-        perspective: "1000px",
+        perspective: isMobile ? "none" : "1000px",
         position: "relative",
         cursor: "pointer",
       }}
@@ -72,18 +83,12 @@ function ProjectCard({
         onMouseMove={handleMouse}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          if (typeof onClick === "function") {
-            onClick(e);
-          }
-        }}
+        onClick={onClick}
         style={{
-          rotateX,
-          rotateY,
-          scale,
-          transformStyle: "preserve-3d",
+          rotateX: isMobile ? 0 : rotateX,
+          rotateY: isMobile ? 0 : rotateY,
+          scale: isMobile ? 1 : scale,
+          transformStyle: isMobile ? "initial" : "preserve-3d",
           position: "relative",
           pointerEvents: "auto",
         }}
@@ -364,20 +369,14 @@ features: [
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-lg p-4 mt-450 sm:mt-0"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-lg p-4 mt-[1800px] md:mt-[1800px]"
           >
             <motion.div
               initial={{ scale: 0.8, y: 50 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.8, y: 50 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onMouseDown={(e) => e.stopPropagation()}
-              onTouchStart={(e) => e.stopPropagation()}
-              onTouchEnd={(e) => e.stopPropagation()}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
+              onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-2xl max-h-[85vh] md:max-h-[70vh] overflow-y-auto rounded-3xl"
               style={{
                 border: "1px solid rgba(255,255,255,0.15)",
