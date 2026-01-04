@@ -83,7 +83,13 @@ function ProjectCard({
         onMouseMove={handleMouse}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={onClick}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof onClick === "function") {
+            onClick(e);
+          }
+        }}
         style={{
           rotateX: isMobile ? 0 : rotateX,
           rotateY: isMobile ? 0 : rotateY,
@@ -345,7 +351,9 @@ features: [
             <ProjectCard
               key={index}
               {...project}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 setSelectedProject(project);
                 setCurrentImageIndex(0);
               }}
@@ -367,14 +375,21 @@ features: [
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-lg p-4 mt-450"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-lg p-4"
+            style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
           >
             <motion.div
               initial={{ scale: 0.8, y: 50 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.8, y: 50 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
+              onTouchEnd={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
               className="relative w-full max-w-2xl max-h-[85vh] md:max-h-[70vh] overflow-y-auto rounded-3xl"
               style={{
                 border: "1px solid rgba(255,255,255,0.15)",
