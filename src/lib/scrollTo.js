@@ -21,17 +21,44 @@ export default function scrollToSection(sectionId, opts = {}) {
     // ignore and fall back
   }
 
-  // Fallback to native smooth scroll - dengan polyfill untuk browser yang tidak support
+  // Fallback to native smooth scroll dengan custom animation untuk smooth lebih baik
+  const startPos = window.scrollY || document.documentElement.scrollTop;
+  const targetPos = element.getBoundingClientRect().top + startPos;
+  const distance = targetPos - startPos;
+  const duration = opts.duration || 1500; // Increased dari 1000 menjadi 1500ms
+  const startTime = performance.now();
+
+  function easeInOutCubic(t) {
+    // Smooth easing function untuk scroll lebih halus
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function animateScroll(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeProgress = easeInOutCubic(progress);
+    
+    window.scrollTo(0, startPos + distance * easeProgress);
+
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    } else {
+      if (opts.onComplete) opts.onComplete();
+    }
+  }
+
   try {
+    // Coba native smooth scroll dulu
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (e) {
-    // Fallback untuk browser yang tidak support smooth scroll
-    element.scrollIntoView({ block: "start" });
+    // Fallback ke custom animation jika native smooth tidak support
+    requestAnimationFrame(animateScroll);
   }
   
   if (opts.onComplete) {
-    // Estimate duration dan call onComplete after delay
-    const estimatedDuration = opts.duration || 1000;
+    const estimatedDuration = opts.duration || 1500;
     setTimeout(opts.onComplete, estimatedDuration);
+  }
+}
   }
 }
