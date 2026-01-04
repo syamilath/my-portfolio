@@ -21,11 +21,17 @@ export default function scrollToSection(sectionId, opts = {}) {
     // ignore and fall back
   }
 
-  // Fallback to native smooth scroll
-  element.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Fallback to native smooth scroll - dengan polyfill untuk browser yang tidak support
+  try {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (e) {
+    // Fallback untuk browser yang tidak support smooth scroll
+    element.scrollIntoView({ block: "start" });
+  }
+  
   if (opts.onComplete) {
-    // Estimate duration and call onComplete after delay
-    const estimatedDuration = opts.duration || 700;
+    // Estimate duration dan call onComplete after delay
+    const estimatedDuration = opts.duration || 1000;
     setTimeout(opts.onComplete, estimatedDuration);
   }
 }

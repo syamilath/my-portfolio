@@ -13,13 +13,13 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     // Close mobile menu jika terbuka
     setIsOpen(false);
     
-    // Delay scroll sedikit untuk memastikan menu tertutup dan DOM siap
+    // Delay sangat kecil untuk memastikan state update
     setTimeout(() => {
       scrollToSection(sectionId, { 
         duration: 1000,
         onComplete: () => setActiveSection(sectionId) 
       });
-    }, 100);
+    }, 50);
   };
 
   return (

@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+}
+
 :root {
   --primary: oklch(0.205 0 0);
   --dark: #0D0D0D;

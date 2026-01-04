@@ -7,13 +7,13 @@ const Contact = ({ setActiveSection }) => {
     const sectionId = item.toLowerCase().replace(" ", "-");
     setActiveSection(sectionId);
     
-    // Delay scroll sedikit untuk memastikan DOM siap
+    // Delay sangat kecil untuk memastikan state update
     setTimeout(() => {
       scrollToSection(sectionId, { 
         duration: 1000,
         onComplete: () => setActiveSection(sectionId) 
       });
-    }, 100);
+    }, 50);
   };
   const [formData, setFormData] = useState({
     name: '',
