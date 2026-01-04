@@ -16,7 +16,6 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     // Delay sangat kecil untuk memastikan state update
     setTimeout(() => {
       scrollToSection(sectionId, { 
-        duration: 1500,
         onComplete: () => setActiveSection(sectionId) 
       });
     }, 50);

@@ -5,9 +5,13 @@ export default function scrollToSection(sectionId, opts = {}) {
   const element = document.getElementById(sectionId);
   if (!element) return;
 
+  // Detect mobile
+  const isMobile = window.innerWidth < 768;
+  
+  // Jika desktop, gunakan GSAP ScrollSmoother (desktop smooth scroll handling)
   try {
     const smoother = window.__gsap_smoother;
-    if (smoother && typeof smoother.scrollTo === "function") {
+    if (smoother && typeof smoother.scrollTo === "function" && !isMobile) {
       // ScrollSmoother prefers targets (selector or element)
       smoother.scrollTo(element, {
         // let ScrollSmoother control easing; allow optional callback
@@ -21,11 +25,14 @@ export default function scrollToSection(sectionId, opts = {}) {
     // ignore and fall back
   }
 
-  // Fallback to native smooth scroll dengan custom animation untuk smooth lebih baik
+  // Fallback to custom animation (untuk mobile terutama)
   const startPos = window.scrollY || document.documentElement.scrollTop;
   const targetPos = element.getBoundingClientRect().top + startPos;
   const distance = targetPos - startPos;
-  const duration = opts.duration || 1500; // Increased dari 1000 menjadi 1500ms
+  
+  // Duration lebih panjang untuk mobile (2000ms), normal untuk desktop (800ms)
+  const defaultDuration = isMobile ? 2000 : 800;
+  const duration = opts.duration || defaultDuration;
   const startTime = performance.now();
 
   function easeInOutCubic(t) {
@@ -47,16 +54,11 @@ export default function scrollToSection(sectionId, opts = {}) {
     }
   }
 
-  try {
-    // Coba native smooth scroll dulu
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-  } catch (e) {
-    // Fallback ke custom animation jika native smooth tidak support
-    requestAnimationFrame(animateScroll);
-  }
+  // Gunakan custom animation untuk smooth yang lebih baik
+  requestAnimationFrame(animateScroll);
   
   if (opts.onComplete) {
-    const estimatedDuration = opts.duration || 1500;
+    const estimatedDuration = opts.duration || defaultDuration;
     setTimeout(opts.onComplete, estimatedDuration);
   }
 }
