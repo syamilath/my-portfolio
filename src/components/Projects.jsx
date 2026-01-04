@@ -61,11 +61,6 @@ function ProjectCard({
 
   return (
     <div
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={onClick}
       className="project-card"
       style={{
         perspective: "1000px",
@@ -74,14 +69,20 @@ function ProjectCard({
       }}
     >
       <motion.div
+        ref={ref}
+        onMouseMove={handleMouse}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={onClick}
         style={{
           rotateX,
           rotateY,
           scale,
           transformStyle: "preserve-3d",
           position: "relative",
+          pointerEvents: "auto",
         }}
-        className="relative rounded-3xl overflow-hidden h-[250px]"
+        className="relative rounded-3xl overflow-hidden h-[250px] w-full cursor-pointer"
       >
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
