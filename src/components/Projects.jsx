@@ -369,7 +369,7 @@ features: [
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-lg p-4 mt-[1800px] md:mt-[1800px]"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-lg p-4 md:mt-[1800px]"
           >
             <motion.div
               initial={{ scale: 0.8, y: 50 }}
