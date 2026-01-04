@@ -242,6 +242,35 @@ export default function ExpertiseSection() {
         </div>
       </div>
 
+      {/* Mobile Navigation Buttons */}
+      <div className="md:hidden">
+        {/* Previous Button */}
+        <button
+          onClick={scrollToPrev}
+          disabled={currentIndex === 0}
+          className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300 ${
+            currentIndex === 0
+              ? "opacity-30 cursor-not-allowed"
+              : "opacity-70 hover:opacity-100 active:scale-95"
+          }`}
+        >
+          <ChevronUp className="w-6 h-6 text-white" />
+        </button>
+
+        {/* Next Button */}
+        <button
+          onClick={scrollToNext}
+          disabled={currentIndex === expertiseData.length - 1}
+          className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300 ${
+            currentIndex === expertiseData.length - 1
+              ? "opacity-30 cursor-not-allowed"
+              : "opacity-70 hover:opacity-100 active:scale-95"
+          }`}
+        >
+          <ChevronDown className="w-6 h-6 text-white" />
+        </button>
+      </div>
+
       {/* Navigation Controls - Fixed Bottom */}
       <div className="absolute bottom-0 left-0 right-0 z-20 pb-8 px-8 to-transparent">
         <div className="max-w-4xl mx-auto">

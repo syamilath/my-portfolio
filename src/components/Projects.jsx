@@ -364,8 +364,7 @@ features: [
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 z-[9999] flex items-center md:items-start justify-center bg-black/70 backdrop-blur-lg p-4 md:pt-[450px]"
-            style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-lg p-4 mt-450 sm:mt-0"
           >
             <motion.div
               initial={{ scale: 0.8, y: 50 }}
