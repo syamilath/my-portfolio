@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { Instagram, Linkedin, Mail, Check, Send } from 'lucide-react';
 import scrollToSection from '@/lib/scrollTo';
 
-const Contact = ({ setActiveSection: setActiveSectionProp }) => {
-  const setActiveSection = setActiveSectionProp || (() => {});
-  
+const Contact = ({ setActiveSection }) => {
   const handleNavClick = (item) => {
     const sectionId = item.toLowerCase().replace(" ", "-");
     setActiveSection(sectionId);

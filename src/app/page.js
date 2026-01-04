@@ -40,7 +40,7 @@ export default function Home() {
           </div>
 
           <div id="contact">
-            <Contact />
+            <Contact setActiveSection={setActiveSection} />
           </div>
 
         </div>
