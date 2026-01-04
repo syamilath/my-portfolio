@@ -10,12 +10,16 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   const handleNavClick = (item) => {
     const sectionId = item.toLowerCase().replace(" ", "-");
     setActiveSection(sectionId);
-    scrollToSection(sectionId, { 
-      duration: 1000,
-      onComplete: () => setActiveSection(sectionId) 
-    });
     // Close mobile menu jika terbuka
     setIsOpen(false);
+    
+    // Delay scroll sedikit untuk memastikan menu tertutup dan DOM siap
+    setTimeout(() => {
+      scrollToSection(sectionId, { 
+        duration: 1000,
+        onComplete: () => setActiveSection(sectionId) 
+      });
+    }, 100);
   };
 
   return (

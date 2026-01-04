@@ -6,7 +6,14 @@ const Contact = ({ setActiveSection }) => {
   const handleNavClick = (item) => {
     const sectionId = item.toLowerCase().replace(" ", "-");
     setActiveSection(sectionId);
-    scrollToSection(sectionId, { onComplete: () => setActiveSection(sectionId) });
+    
+    // Delay scroll sedikit untuk memastikan DOM siap
+    setTimeout(() => {
+      scrollToSection(sectionId, { 
+        duration: 1000,
+        onComplete: () => setActiveSection(sectionId) 
+      });
+    }, 100);
   };
   const [formData, setFormData] = useState({
     name: '',
