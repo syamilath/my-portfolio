@@ -13,14 +13,14 @@ const Achievement = () => {
       id: 1,
       title: "Cyber Sentrix",
       date: "02/CNT/1/25",
-      image: "/certificate/1709345731605.jpg",
+      image: "/certificate/syamil.jpg",
       description: "Achievement in Cybersecurity Excellence"
     },
     {
       id: 2,
       title: "Network Security Specialist",
       date: "2024",
-      image: "/certificate/1750750965673_page-0001.jpg",
+      image: "/certificate/3.png",
       description: "Advanced Network Security Certification"
     },
     {
@@ -85,6 +85,14 @@ const Achievement = () => {
       title: "Web Development Excellence",
       date: "2024",
       image: "/certificate/udemy.jpg",
+      description: "Full Stack Development Certification"
+    },
+
+     {
+      id: 10,
+      title: "Web Development Excellence",
+      date: "2024",
+      image: "/certificate/7.jpg",
       description: "Full Stack Development Certification"
     }
   ];
