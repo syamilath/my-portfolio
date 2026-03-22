@@ -94,6 +94,14 @@ const Achievement = () => {
       date: "2024",
       image: "/certificate/7.jpg",
       description: "Full Stack Development Certification"
+    },
+
+     {
+      id: 10,
+      title: "Web Development Excellence",
+      date: "2024",
+      image: "/certificate/digiup.jpg",
+      description: "Full Stack Development Certification"
     }
   ];
 
