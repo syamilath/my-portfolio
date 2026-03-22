@@ -81,7 +81,7 @@ const Achievement = () => {
     },
 
      {
-      id: 10,
+      id: 11,
       title: "Web Development Excellence",
       date: "2024",
       image: "/certificate/udemy.jpg",
@@ -89,15 +89,15 @@ const Achievement = () => {
     },
 
      {
-      id: 10,
+      id: 12,
       title: "Web Development Excellence",
       date: "2024",
-      image: "/certificate/7.jpg",
+      image: "/certificate/7.png",
       description: "Full Stack Development Certification"
     },
 
      {
-      id: 10,
+      id: 13,
       title: "Web Development Excellence",
       date: "2024",
       image: "/certificate/digiup.jpg",
