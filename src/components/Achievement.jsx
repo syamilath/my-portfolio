@@ -108,7 +108,7 @@ const Achievement = () => {
       id: 14,
       title: "Cyber Security",
       date: "2024",
-      image: "/certificate/Sertifikat - Syamil Athalla Rahman 2_page-0001 (1).jpg",
+      image: "/certificate/Sertifikat_SYAMIL ATHALLA RAHMAN_Basic Cyber Security untuk Siswa SMA_Sederajat_page-0001.jpg",
       description: "Basic Cyber Security"
     }
   ];
