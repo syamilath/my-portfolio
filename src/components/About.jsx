@@ -72,14 +72,14 @@ const About = () => {
             {/* Button Section */}
             <div className="flex justify-center md:justify-start px-2 sm:px-0">
               <a
-                href="/Portfolio.pdf"
+                href="/CV.pdf"
                 download
                 className="group relative w-full sm:w-auto max-w-xs sm:max-w-none overflow-hidden bg-white/10 backdrop-blur-2xl text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-medium transition-all duration-300 border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.3)] hover:scale-[1.02] inline-block text-center"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/30 to-transparent skew-x-12" />
                 <div className="absolute bottom-0 inset-x-0 h-1/2 bg-linear-to-t from-black/10 to-transparent rounded-full" />
                 <span className="relative z-10 drop-shadow-sm text-[#c3874c]">
-                  Download Portfolio
+                  Download CV
                 </span>
               </a>
             </div>

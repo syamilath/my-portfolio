@@ -90,7 +90,7 @@ const Achievement = () => {
 
      {
       id: 12,
-      title: "Web Development Excellence",
+      title: "Web Development Ex–cellence",
       date: "2024",
       image: "/certificate/7.png",
       description: "Full Stack Development Certification"

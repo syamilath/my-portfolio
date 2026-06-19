@@ -309,7 +309,7 @@ features: [
         "/project/server/7.png",
       ],
      description: 
-  "This project implements a comprehensive 'Defense in Depth' strategy on Ubuntu Server 22.04 to create a high-security environment resistant to Brute Force attacks, web exploits, and Denial of Service (DoS). By layering network filtering, intrusion prevention, and full disk encryption, the system acts as a digital fortress protecting critical data from both remote cyber threats and physical theft.",
+  "This project implements a comprehensive 'Defense in Depth' strategy on Ubuntu Server 22.04 to create a high-security environment resistant to Brute Force attacks, web exploits, and Denial of Service (DoS). By layering network filtering, intrusion prevention, and full disk encryption, the system acts as a digital fortress protecting critical data from both remote cyber threats and physical theft.(https://docs.google.com/document/d/1SUn2D-iq18SbtDx4lhWicgoRTUtt1iKHtGcBbwHxJOw/edit?usp=sharing)",
 technologies: ["Ubuntu Server 22.04 LTS", "Suricata (IDS/IPS)", "Fail2Ban", "UFW Firewall", "LUKS Encryption", "Apache2 (Mod_Evasive)", "SSH-keygen"],
 features: [
   "Data Confidentiality: Secured physical data protection using LUKS Full Disk Encryption.",
