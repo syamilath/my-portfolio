@@ -102,6 +102,14 @@ const Achievement = () => {
       date: "2024",
       image: "/certificate/digiup.jpg",
       description: "Full Stack Development Certification"
+    },
+
+    {
+      id: 14,
+      title: "Cyber Security",
+      date: "2024",
+      image: "/certificate/Sertifikat - Syamil Athalla Rahman 2_page-0001 (1).jpg",
+      description: "Basic Cyber Security"
     }
   ];
 
